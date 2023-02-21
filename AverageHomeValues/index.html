@@ -1,0 +1,332 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- proper bootstrap responses on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- bootstrap CSS link source -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- filter search bar functionality source -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- sorting function source -->
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+    <title>Median Home Values</title>
+</head>
+
+<body>
+    <div class="map-container">
+      <h4 style="font-size: calc(12px + 0.5vw);">2022 Median Home Values Per State</h4>
+      
+      <!-- map frame -->
+      <iframe src="https://createaclickablemap.com/map.php?id=114491&maplocation=null&online=true"></iframe>
+      <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
+    </div>
+
+    <div class="filter-search-section">
+        <h4 style="font-size: calc(12px + 0.5vw);">Filter By State</h4>  
+        
+        <div class="search-bar-section">
+          <!-- filter search bar -->
+          <input class="form-control" id="myInput" type="text" placeholder="Search by state...">
+          
+          <script>
+            // <!-- filter search bar functionality-->
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+          </script>
+        </div>         
+
+        <!-- table structure -->
+        <table class="table table-bordered table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">State <span style="color: rgb(123, 180, 234);">&#8645;</span></th>
+              <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(2)')" style="cursor:pointer">Value <span style="color: rgb(123, 180, 234);">&#8645;</span></th>
+            </tr>
+          </thead>
+        </table>
+
+        <script>
+          // data of median home values by state
+          let medianValues = [
+            {
+              "state": "Alabama",
+              "MedianValue": 149600,
+              "medianValueZillow": 194695
+            },
+            {
+              "state": "Alaska",
+              "MedianValue": 275600,
+              "medianValueZillow": 312988
+            },
+            {
+              "state": "Arizona",
+              "MedianValue": 242000,
+              "medianValueZillow": 416433
+            },
+            {
+              "state": "Arkansas",
+              "MedianValue": 133600,
+              "medianValueZillow": 169867
+            },
+            {
+              "state": "California",
+              "MedianValue": 538500,
+              "medianValueZillow": 760800
+            },
+            {
+              "state": "Colorado",
+              "MedianValue": 369900,
+              "medianValueZillow": 559838
+            },
+            {
+              "state": "Connecticut",
+              "MedianValue": 279700,
+              "medianValueZillow": 343687
+            },
+            {
+              "state": "Delaware",
+              "MedianValue": 258300,
+              "medianValueZillow": 337543
+            },
+            {
+              "state": "Florida",
+              "MedianValue": 232000,
+              "medianValueZillow": 358018
+            },
+            {
+              "state": "Georgia",
+              "MedianValue": 190200,
+              "medianValueZillow": 295159
+            },
+            {
+              "state": "Hawaii",
+              "MedianValue": 636400,
+              "medianValueZillow": 848926
+            },
+            {
+              "state": "Idaho",
+              "MedianValue": 235600,
+              "medianValueZillow": 466435
+            },
+            {
+              "state": "Illinois",
+              "MedianValue": 202100,
+              "medianValueZillow": 253433
+            },
+            {
+              "state": "Indiana",
+              "MedianValue": 148900,
+              "medianValueZillow": 210166
+            },
+            {
+              "state": "Iowa",
+              "MedianValue": 153900,
+              "medianValueZillow": 183418
+            },
+            {
+              "state": "Kansas",
+              "MedianValue": 157600,
+              "medianValueZillow": 198199
+            },
+            {
+              "state": "Kentucky",
+              "MedianValue": 147100,
+              "medianValueZillow": 188439
+            },
+            {
+              "state": "Louisiana",
+              "MedianValue": 168100,
+              "medianValueZillow": 205972
+            },
+            {
+              "state": "Maine",
+              "MedianValue": 198000,
+              "medianValueZillow": 344592
+            },
+            {
+              "state": "Maryland",
+              "MedianValue": 325400,
+              "medianValueZillow": 390608
+            },
+            {
+              "state": "Massachusetts",
+              "MedianValue": 398800,
+              "medianValueZillow": 559312
+            },
+            {
+              "state": "Michigan",
+              "MedianValue": 162600,
+              "medianValueZillow": 225324
+            },
+            {
+              "state": "Minnesota",
+              "MedianValue": 235700,
+              "medianValueZillow": 323515
+            },
+            {
+              "state": "Mississippi",
+              "MedianValue": 125500,
+              "medianValueZillow": 157828
+            },
+            {
+              "state": "Missouri",
+              "MedianValue": 163600,
+              "medianValueZillow": 218208
+            },
+            {
+              "state": "Montana",
+              "MedianValue": 244900,
+              "medianValueZillow": 428202
+            },
+            {
+              "state": "Nebraska",
+              "MedianValue": 164000,
+              "medianValueZillow": 230672
+            },
+            {
+              "state": "Nevada",
+              "MedianValue": 290200,
+              "medianValueZillow": 434832
+            },
+            {
+              "state": "New Hampshire",
+              "MedianValue": 272300,
+              "medianValueZillow": 411945
+            },
+            {
+              "state": "New Jersey",
+              "MedianValue": 343500,
+              "medianValueZillow": 441762
+            },
+            {
+              "state": "New Mexico",
+              "MedianValue": 175700,
+              "medianValueZillow": 277617
+            },
+            {
+              "state": "New York",
+              "MedianValue": 325000,
+              "medianValueZillow": 382663
+            },
+            {
+              "state": "North Carolina",
+              "MedianValue": 182100,
+              "medianValueZillow": 296021
+            },
+            {
+              "state": "North Dakota",
+              "MedianValue": 199900,
+              "medianValueZillow": 266763
+            },
+            {
+              "state": "Ohio",
+              "MedianValue": 151400,
+              "medianValueZillow": 199959
+            },
+            {
+              "state": "Oklahoma",
+              "MedianValue": 142400,
+              "medianValueZillow": 171057
+            },
+            {
+              "state": "Oregon",
+              "MedianValue": 336700,
+              "medianValueZillow": 502215
+            },
+            {
+              "state": "Pennsylvania",
+              "MedianValue": 187500,
+              "medianValueZillow": 254597
+            },
+            {
+              "state": "Rhode Island",
+              "MedianValue": 276600,
+              "medianValueZillow": 412897
+            },
+            {
+              "state": "South Carolina",
+              "MedianValue": 170100,
+              "medianValueZillow": 269186
+            },
+            {
+              "state": "South Dakota",
+              "MedianValue": 174600,
+              "medianValueZillow": 277809
+            },
+            {
+              "state": "Tennessee",
+              "MedianValue": 177600,
+              "medianValueZillow": 276963
+            },
+            {
+              "state": "Texas",
+              "MedianValue": 187200,
+              "medianValueZillow": 289896
+            },
+            {
+              "state": "Utah",
+              "MedianValue": 305400,
+              "medianValueZillow": 544868
+            },
+            {
+              "state": "Vermont",
+              "MedianValue": 230900,
+              "medianValueZillow": 336310
+            },
+            {
+              "state": "Virginia",
+              "MedianValue": 282800,
+              "medianValueZillow": 358447
+            },
+            {
+              "state": "Washington",
+              "MedianValue": 366800,
+              "medianValueZillow": 595732
+            },
+            {
+              "state": "West Virginia",
+              "MedianValue": 123200,
+              "medianValueZillow": 129103
+            },
+            {
+              "state": "Wisconsin",
+              "MedianValue": 189200,
+              "medianValueZillow": 251655
+            },
+            {
+              "state": "Wyoming",
+              "MedianValue": 228000,
+              "medianValueZillow": 308862
+            }
+          ]
+          
+          // initializing and calling table populating function
+          buildTable(medianValues)
+          
+          function buildTable(data){
+              let table = document.getElementById('myTable')
+              for (let i = 0; i < data.length; i++){
+                  let row = `<tr class="item">
+                                <td>${data[i].state}</td>
+                                <td>${'$' + data[i].medianValueZillow}</td>
+                            </tr>`
+                  table.innerHTML += row;
+              }
+          }
+        </script>
+    </div>
+  <!-- bootstrap JS link source -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
