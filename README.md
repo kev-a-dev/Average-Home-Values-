@@ -6,7 +6,7 @@ Responsive site that showcases 2022 median home values per state. Simply hover o
 link: https://kev-a-dev.github.io/Median-Home-Values-/
 ## Data
 
-Data used is from the following: 
+Dataset is from the following: 
 https://worldpopulationreview.com/state-rankings/median-home-price-by-state
 ## Tech Stack
 
