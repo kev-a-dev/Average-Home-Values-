@@ -120,9 +120,27 @@ iframe {
   transition: 50ms;
 }
 
-@media all and (min-width: 1200px) and (max-width: 1400px) {
+@media all and (min-width:1400px) {
+  .content-container {
+    flex-direction: column;
+  }
+
   iframe {
-    height: 550px;
+    height: 750px;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 1200px) and (max-width: 1400px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  iframe {
+    height: 700px;
   }
 
   }
